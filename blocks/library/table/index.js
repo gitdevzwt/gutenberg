@@ -11,6 +11,36 @@ import './style.scss';
 import TableBlock from './table-block';
 import BlockControls from '../../block-controls';
 import BlockAlignmentToolbar from '../../block-alignment-toolbar';
+import { getPhrasingContentSchema } from '../../api';
+
+const tableContentSchema = {
+	tr: {
+		children: {
+			th: {
+				children: getPhrasingContentSchema(),
+			},
+			td: {
+				children: getPhrasingContentSchema(),
+			},
+		},
+	},
+};
+
+const tableSchema = {
+	table: {
+		children: {
+			thead: {
+				children: tableContentSchema,
+			},
+			tfoot: {
+				children: tableContentSchema,
+			},
+			tbody: {
+				children: tableContentSchema,
+			},
+		},
+	},
+};
 
 export const name = 'core/table';
 
@@ -41,7 +71,8 @@ export const settings = {
 		from: [
 			{
 				type: 'raw',
-				isMatch: ( node ) => node.nodeName === 'TABLE',
+				selector: 'table',
+				schema: tableSchema,
 			},
 		],
 	},
