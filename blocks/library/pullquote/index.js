@@ -124,7 +124,7 @@ export const settings = {
 					<p key={ i }>{ paragraph.children && paragraph.children.props.children }</p>
 				) }
 				{ citation && citation.length > 0 && (
-					<cite>{ citation }</cite>
+					<cite><RichText.Content>{ citation }</RichText.Content></cite>
 				) }
 			</blockquote>
 		);
@@ -149,7 +149,7 @@ export const settings = {
 						<p key={ i }>{ paragraph.children && paragraph.children.props.children }</p>
 					) }
 					{ citation && citation.length > 0 && (
-						<footer>{ citation }</footer>
+						<footer><RichText.Content>{ citation }</RichText.Content></footer>
 					) }
 				</blockquote>
 			);
